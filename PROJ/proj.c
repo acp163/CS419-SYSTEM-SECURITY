@@ -50,7 +50,7 @@ int main()
 	printf("Create New File:(c)\n");
 	printf("Edit Exiting FIle:(e)\n");
 	printf("List all files from secure system(l)--To be implemented\n");
-	printf("Delete File(d)--To be implemented\n");
+	printf("Delete File(d)\n");
 	printf("Rename File(r)--To be implemented\n");
 	printf("Exit system(x)--To be implemented\n");
 	printf("Select Option:");
@@ -83,6 +83,22 @@ int main()
 			char *vfilelist=  read_repository_filename();
 			printf("\n\nFile list:  %s\n",  vfilelist);
 			break;
+
+	case 'd':
+	  printf("Selected Option:%c\n",ch[0]);
+	  printf("Enter filename to delete:");
+	  char file2remove[256];
+	  char file2removepath[512] = "./.SYSSEC/";
+	  scanf("%s",file2remove);
+	  strcat(file2removepath, file2remove);
+	  if (remove(file2removepath) == 0) {
+	    printf("Deleted [%s] successfully\n\n", file2remove);
+	  } else {
+	    printf("ERROR: unable to delete [%s]\n\n");
+	  }
+
+	  
+	  break;
 	
 		case 'e':
 			printf("Selected Option:%c",ch[0]);
