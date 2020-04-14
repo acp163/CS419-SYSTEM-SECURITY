@@ -92,9 +92,9 @@ int main()
 	  scanf("%s",file2remove);
 	  strcat(file2removepath, file2remove);
 	  if (remove(file2removepath) == 0) {
-	    printf("Deleted [%s] successfully\n\n", file2remove);
+	    printf("Deleted [%s] successfully.\n\n", file2remove);
 	  } else {
-	    printf("ERROR: unable to delete [%s]\n\n");
+	    printf("ERROR: unable to delete [%s].\n\n");
 	  }
 
 	  
