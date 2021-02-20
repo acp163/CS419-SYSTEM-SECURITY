@@ -263,29 +263,34 @@ char *buf2=(char *) malloc(strlen(*line)+1);
 int i=0;
 //int key=3;
 char ch=buf[i];
+//CIPHER ENCRYPTION
 while(ch!='\0')
- {
-								if(ch >= 'a' && ch <= 'z'){
-												ch = ch + key;
-												if(ch > 'z'){
-																ch = ch - 'z' + 'a' - 1;
-												}
-												buf2[i] = ch;
-								}
-								else if(ch >= 'A' && ch <= 'Z'){
-												ch = ch + key;
-												if(ch > 'Z'){
-																ch = ch - 'Z' + 'A' - 1;
-												}
-												buf2[i] = ch;
-								}
-								else
-												buf2[i] = ch;
-//printf("changed:%c ",ch);
-i++;
+{
+	if(ch >= 'a' && ch <= 'z')
+	{
+		ch = ch + key;
+		if(ch > 'z')
+		{
+			ch = ch - 'z' + 'a' - 1;
+		}
+		buf2[i] = ch;
+	}
+	else if(ch >= 'A' && ch <= 'Z'){
+		ch = ch + key;
+		if(ch > 'Z')
+		{
+			ch = ch - 'Z' + 'A' - 1;
+		}
+		buf2[i] = ch;
+	}
+	else
+		buf2[i] = ch;
+	//printf("changed:%c ",ch);
+	i++;
 	ch=buf[i];
-				 }
-									buf2[i]='\0';
+}
+
+buf2[i]='\0';
 //--------------------------------------------------
 		int nbytes_this_line = 0;
 		if (i) nbytes_this_line += fwrite("\n", 1, 1, f);  // 1, 1 = size, nitems
@@ -364,31 +369,35 @@ name=filename;
 int i=0;
 //int key=3;
 char ch=buf2[i];
+//CIPHER DECRYPTION
 while(ch!='\0')
- {
-								if(ch >= 'a' && ch <= 'z'){
-												ch = ch - key;
-												 if(ch < 'a'){
-												 ch = ch + 'z' - 'a' + 1;
-
-											}
-												buffer[i] = ch;
-								}
-								else if(ch >= 'A' && ch <= 'Z'){
-												ch = ch - key;
-								 if(ch < 'A'){
-									 ch = ch + 'Z' - 'A' + 1;
-
-									}
-												buffer[i] = ch;
-								}
-								else
-												buffer[i] = ch;
+{
+	if(ch >= 'a' && ch <= 'z')
+	{
+		ch = ch - key;
+		if(ch < 'a')
+		{
+			ch = ch + 'z' - 'a' + 1;
+		}
+		buffer[i] = ch;
+	}
+	else if(ch >= 'A' && ch <= 'Z')
+	{
+		ch = ch - key;
+		if(ch < 'A')
+		{
+			ch = ch + 'Z' - 'A' + 1;
+		}
+			buffer[i] = ch;
+	}
+	else
+	buffer[i] = ch;
 //printf("changed:%c ",ch);
 i++;
- ch=buf2[i];
-			}
-														buffer[i]='\0';
+ch=buf2[i];
+}
+
+buffer[i]='\0';
 //----------------------------------------
 	if (num_read < buffer_size) goto bad_read;
 
